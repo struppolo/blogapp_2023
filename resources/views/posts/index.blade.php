@@ -19,7 +19,7 @@
             <td class="align-middle">{{ $post->autore }}</td>
             <td>
                 <a href="{{route('posts.edit', $post->id)}}" class="btn btn-warning me-2">Modifica</a>
-                <form action="{{route('posts.delete', $post->id)}}" method="POST">
+                <form action="{{route('posts.destroy', $post->id)}}" method="POST">
                     @method('delete')
                     @csrf
                     <button type="submit" class="btn btn-danger">Elimina</button>
