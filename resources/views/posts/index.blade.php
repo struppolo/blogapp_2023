@@ -14,9 +14,9 @@
         <tbody>
         @foreach ($posts as $post)
         <tr>
-            <td class="align-middle">{{ $post->titolo }}</td>
+            <td class="align-middle"><a href="{{route('posts.show',$post->id)}}"">{{ $post->titolo }}</a></td>
             <td class="align-middle">{{ $post->contenuto }}</td>
-            <td class="align-middle">{{ $post->autore }}</td>
+            <td class="align-middle">{{ $post->user->name }}</td>
             <td>
                 <a href="{{route('posts.edit', $post->id)}}" class="btn btn-warning me-2">Modifica</a>
                 <form action="{{route('posts.destroy', $post->id)}}" method="POST">
