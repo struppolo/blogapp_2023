@@ -49,7 +49,9 @@
                                 </li>
                             @endif
                         @else
-
+                                
+                       <li class="nav-item"><a href="/tokens/create" class="nav-link" >Crea token per API</a>
+                    </li>
                             <li class="nav-item"><a href="{{ route('posts.index')}}" class="nav-link" >Lista post</a>
                             </li>
                             <li class="nav-item"><a href="{{ route('posts.create')}}" class="nav-link" >Inserisci un post</a>

@@ -2,6 +2,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,7 +21,7 @@ use App\Models\Post;
 */
 Route::get('/posts',function(){
 return Post::all();
-});
+})->middleware('auth:sanctum');
 Route::get('/posts/{id}',function($id){
 return Post::findOrFail($id);
 });
@@ -39,4 +42,25 @@ $post->save();
 Route::delete('/posts/{id}', function($id){
 $id = Post::findOrFail($id);
 $id->delete();
+});
+
+// https://laravel.com/docs/10.x/authentication#authenticating-users
+// ricreo l'autenticazione di laravel per ottenere il token da api
+
+Route::post('/login', function (Request $request) {
+    $credentials = $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
+
+    if (Auth::attempt($credentials)) {
+   //     $request->session()->regenerate();
+    $token = Auth::user()->createToken('apiToken');
+      return ['token' => $token->plainTextToken];
+    }
+
+    else return 'The provided credentials do not match our records.';
+   
+
+
 });

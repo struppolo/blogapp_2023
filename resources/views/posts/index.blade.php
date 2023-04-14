@@ -7,8 +7,7 @@
           <tr>
             <th scope="col">Titolo</th>
             <th scope="col">Contenuto</th>
-            <th scope="col">Autore</th>
-            <th scope="col">Azioni</th>
+            <th scope="col" colspan="2">Azioni</th>
           </tr>
         </thead>
         <tbody>
@@ -16,9 +15,10 @@
         <tr>
             <td class="align-middle"><a href="{{route('posts.show',$post->id)}}"">{{ $post->titolo }}</a></td>
             <td class="align-middle">{{ $post->contenuto }}</td>
-            <td class="align-middle">{{ $post->user->name }}</td>
+         
             <td>
-                <a href="{{route('posts.edit', $post->id)}}" class="btn btn-warning me-2">Modifica</a>
+                <a href="{{route('posts.edit', $post->id)}}" class="btn btn-warning me-2">Modifica</a></td>
+                <td>
                 <form action="{{route('posts.destroy', $post->id)}}" method="POST">
                     @method('delete')
                     @csrf
