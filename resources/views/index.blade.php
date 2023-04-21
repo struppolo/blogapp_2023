@@ -32,7 +32,7 @@
 </div>
    <br />
 @endforeach
-
+{{ $posts->links() }}
 <a href="{{ route('login')}}">Area riservata</a>
 </div>
 </body>
